@@ -9,15 +9,30 @@ class Param extends React.Component {
   }
   render() {
     const param = this.props.data.malariaone.parameterById;
+    const relatedPaperCount =
+      this.props.data.malariaone.parameterById.parametersPapersByParametersId
+        .totalCount;
     const relatedPapers =
-      this.props.data.malariaone.parameterById.parametersPapersByParametersId;
+      this.props.data.malariaone.parameterById.parametersPapersByParametersId
+        .nodes;
     return (
       <Layout>
         <p>parameter: {param.name}</p>
         <p>definition: {param.definition}</p>
         <p>type: {param.type}</p>
-        <p>Mentioned in: {relatedPapers.count} papers</p>
-        <div></div>
+        <p>Mentioned in: {relatedPaperCount} papers</p>
+        <div>
+          {relatedPapers.map((paper) => (
+            <Paper
+              title={paper.paperByPaperId.title}
+              doi={paper.paperByPaperId.doi}
+              publishedAt={paper.paperByPaperId.publishedAt}
+            />
+          ))}
+        </div>
+        <div>
+
+        </div>
       </Layout>
     );
   }
@@ -42,6 +57,17 @@ export const query = graphql`
               title
               publishedAt
               id
+              doi
+            }
+          }
+        }
+        parametersParametersByParametersId {
+          totalCount
+          nodes {
+            parameterByRelatedParametersId {
+              name
+              id
+              type
             }
           }
         }

@@ -7,9 +7,9 @@ class Paper extends React.Component {
   render() {
     return (
       <div>
-        {this.props.title}
-        {this.props.publishedAt}
-        {this.props.doi}
+        <p>title: {this.props.title}</p>
+        <p>published: {this.props.publishedAt}</p>
+        <p>doi: {this.props.doi}</p>
       </div>
     );
   }
