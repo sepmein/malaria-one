@@ -1,11 +1,28 @@
 import * as React from "react";
-import * as d3 from "d3";
-import Layout from "../../components/layout";
+import Frame from "../../components/layout";
 import Paper from "../../components/paper";
 import { Link, graphql } from "gatsby";
+import { Typography, Row, Col, Divider, Badge } from "antd";
+import {
+  SlidersOutlined,
+  InfoCircleOutlined,
+  TagOutlined,
+  ApartmentOutlined,
+  LineChartOutlined,
+} from "@ant-design/icons";
+const { Title } = Typography;
+
+React.useLayoutEffect = React.useEffect;
+
 class Param extends React.Component {
   constructor(props) {
     super(props);
+  }
+  switchParamType(param) {
+    switch (param) {
+      case "rate":
+        return <LineChartOutlined />;
+    }
   }
   render() {
     const param = this.props.data.malariaone.parameterById;
@@ -16,12 +33,35 @@ class Param extends React.Component {
       this.props.data.malariaone.parameterById.parametersPapersByParametersId
         .nodes;
     return (
-      <Layout>
-        <p>parameter: {param.name}</p>
-        <p>definition: {param.definition}</p>
-        <p>type: {param.type}</p>
-        <p>Mentioned in: {relatedPaperCount} papers</p>
-        <div>
+      <Frame>
+        <Row>
+          <Title>
+            <SlidersOutlined />
+            {param.name.replace(/\b(\w)/g, (s) => s.toUpperCase())}
+          </Title>
+        </Row>
+        <Row>
+          <Col flex={3}>
+            <InfoCircleOutlined />
+            {param.definition}
+          </Col>
+          <Col flex={3}>
+            <ApartmentOutlined />
+            type: {this.switchParamType(param.type)}
+          </Col>
+          <Col flex={3}>
+            <TagOutlined />
+          </Col>
+        </Row>
+        <Divider orientation="left">Related Parameters</Divider>
+        <Divider orientation="left"></Divider>
+        <Row>
+          <Title level={2}>
+            Related Papers
+            <Badge count={relatedPaperCount}></Badge>
+          </Title>
+        </Row>
+        <Row gutter={16}>
           {relatedPapers.map((paper) => (
             <Paper
               title={paper.paperByPaperId.title}
@@ -29,11 +69,9 @@ class Param extends React.Component {
               publishedAt={paper.paperByPaperId.publishedAt}
             />
           ))}
-        </div>
-        <div>
-
-        </div>
-      </Layout>
+        </Row>
+        <div></div>
+      </Frame>
     );
   }
 }
@@ -50,6 +88,7 @@ export const query = graphql`
         type
         userCreated
         userUpdated
+        tags
         parametersPapersByParametersId {
           totalCount
           nodes {
@@ -68,6 +107,7 @@ export const query = graphql`
               name
               id
               type
+              tags
             }
           }
         }

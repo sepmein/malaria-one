@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as d3 from "d3";
-import Layout from "../components/layout";
+import Frame from "../components/layout";
 import { Link, graphql } from "gatsby";
 
 class IndexPage extends React.Component {
@@ -32,7 +32,7 @@ class IndexPage extends React.Component {
   render() {
     const { data } = this.props;
     return (
-      <Layout pageTitle="Malaria One">
+      <Frame pageTitle="Malaria One">
         <h1>Parameters about the Malaria Models</h1>
         <h2>Stats</h2>
         <p>Papers Count: {data.malariaone.allPapers.totalCount}</p>
@@ -47,7 +47,7 @@ class IndexPage extends React.Component {
         </ul>
 
         <div ref={this.myRef}></div>
-      </Layout>
+      </Frame>
     );
   }
 }
