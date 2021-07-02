@@ -15,14 +15,11 @@ const switchParamType = (type) => {
       return <PieChartOutlined />;
   }
 };
-const Type = ({ props }) => {
-  return (
-    <div>
-      {props.type.map((type) => {
-        switchParamType(type);
-      })}
-    </div>
-  );
-};
 
-export default Type;
+class TypeIndicator extends React.Component {
+  render() {
+    return switchParamType(this.props.type);
+  }
+}
+
+export default TypeIndicator;

@@ -5,8 +5,8 @@ import {
   DeploymentUnitOutlined,
 } from "@ant-design/icons";
 
-const switchTagType = (type) => {
-  switch (type) {
+const switchTagType = (tag) => {
+  switch (tag) {
     case "human":
       return <UserOutlined />;
     case "vector":
@@ -16,13 +16,9 @@ const switchTagType = (type) => {
   }
 };
 const Tags = ({ props }) => {
-  return (
-    <div>
-      {props.tags.map((tag) => {
-        switchTagType(tag);
-      })}
-    </div>
-  );
+  return props.tags.map((tag) => {
+    switchTagType(tag);
+  });
 };
 
 export default Tags;

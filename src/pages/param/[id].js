@@ -1,6 +1,4 @@
 import * as React from "react";
-import Frame from "../../components/layout";
-import Paper from "../../components/paper";
 import { Link, graphql } from "gatsby";
 import { Typography, Row, Col, Divider, Badge } from "antd";
 import {
@@ -10,18 +8,13 @@ import {
   ApartmentOutlined,
   LineChartOutlined,
 } from "@ant-design/icons";
+import TypeIndicator from "../../components/types";
+import Frame from "../../components/layout";
+import Paper from "../../components/paper";
+
 const { Title } = Typography;
 
 class Param extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  switchParamType(param) {
-    switch (param) {
-      case "rate":
-        return <LineChartOutlined />;
-    }
-  }
   render() {
     const param = this.props.data.malariaone.parameterById;
     const relatedPaperCount =
@@ -30,28 +23,42 @@ class Param extends React.Component {
     const relatedPapers =
       this.props.data.malariaone.parameterById.parametersPapersByParametersId
         .nodes;
+    const relatedParametersCount =
+      this.props.data.malariaone.parameterById
+        .parametersParametersByParametersId.totalCount;
     return (
       <Frame>
+        {/* Parameter Name */}
         <Row>
           <Title>
             <SlidersOutlined />
             {param.name.replace(/\b(\w)/g, (s) => s.toUpperCase())}
           </Title>
         </Row>
+        {/* Parameter description */}
         <Row>
           <Col flex={3}>
-            <InfoCircleOutlined />
-            {param.definition}
-          </Col>
-          <Col flex={3}>
-            <ApartmentOutlined />
-            type: {this.switchParamType(param.type)}
+            <TypeIndicator type={param.type} />
           </Col>
           <Col flex={3}>
             <TagOutlined />
           </Col>
         </Row>
-        <Divider orientation="left">Related Parameters</Divider>
+        <Row>
+          <Col>
+            <InfoCircleOutlined />
+            {param.definition}
+          </Col>
+        </Row>
+        <Divider orientation="left"></Divider>
+        <Row>
+          <Title level={2}>
+            Related Parameters
+            <Badge
+              count={relatedParametersCount > 0 ? relatedParametersCount : 0}
+            ></Badge>
+          </Title>
+        </Row>
         <Divider orientation="left"></Divider>
         <Row>
           <Title level={2}>
@@ -68,7 +75,6 @@ class Param extends React.Component {
             />
           ))}
         </Row>
-        <div></div>
       </Frame>
     );
   }
