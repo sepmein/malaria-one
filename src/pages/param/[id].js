@@ -12,8 +12,6 @@ import {
 } from "@ant-design/icons";
 const { Title } = Typography;
 
-React.useLayoutEffect = React.useEffect;
-
 class Param extends React.Component {
   constructor(props) {
     super(props);
