@@ -1,29 +1,28 @@
 import * as React from "react";
-import { Card, Title } from "antd";
-import { FileTextOutlined } from "@ant-design/icons";
-import { card } from "./paper.module.css";
+import * as dayjs from "dayjs";
+import { Card, Text } from "antd";
+import { FileTextOutlined, LinkOutlined } from "@ant-design/icons";
+import { card, cardTitle } from "./paper.module.css";
 
-const { Meta } = Card;
 class Paper extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
-      <div>
-        <Card hoverable className={card}>
-          {/* <Meta avatar={<FileTextOutlined />}></Meta> */}
-          <p>
-            <FileTextOutlined />
-            {this.props.title}
-          </p>
-          <p>published: {this.props.publishedAt}</p>
-          <p>
-            doi:{" "}
-            <a href={"https://doi.org/" + this.props.doi}> {this.props.doi}</a>
-          </p>
-        </Card>
-      </div>
+      <Card
+        hoverable
+        className={card}
+        actions={[
+          <FileTextOutlined />,
+          <a href={"https://doi.org/" + this.props.doi}>
+            <LinkOutlined />
+          </a>,
+          <div>{dayjs(this.props.publishedAt).format("DD/MM/YY")}</div>,
+        ]}
+      >
+        <h4 className={cardTitle}>{this.props.title}</h4>
+      </Card>
     );
   }
 }
