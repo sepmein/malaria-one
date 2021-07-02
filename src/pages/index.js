@@ -1,8 +1,9 @@
 import * as React from "react";
 import * as d3 from "d3";
 import Frame from "../components/layout";
+import { Badge, Button, Title, Row, Space } from "antd";
 import { Link, graphql } from "gatsby";
-
+import ParameterCard from "../components/param";
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
@@ -33,20 +34,28 @@ class IndexPage extends React.Component {
     const { data } = this.props;
     return (
       <Frame pageTitle="Malaria One">
-        <h1>Parameters about the Malaria Models</h1>
-        <h2>Stats</h2>
-        <p>Papers Count: {data.malariaone.allPapers.totalCount}</p>
-        <p>Parameters Count: {data.malariaone.allParameters.totalCount}</p>
-        <h2>Parameters List</h2>
-        <ul>
-          {data.malariaone.allParameters.nodes.map((parameter) => (
-            <li key={parameter.id}>
-              <Link to={"param/" + parameter.id}>{parameter.name}</Link>
-            </li>
-          ))}
-        </ul>
-
-        <div ref={this.myRef}></div>
+        <Row>
+          <Title level={1}>Parameters about the Malaria Models</Title>
+          <Badge count={data.malariaone.allPapers.totalCount}>
+            <Button>Papers</Button>
+          </Badge>
+          <Badge count={data.malariaone.allParameters.totalCount}>
+            <Button>Parameters</Button>
+          </Badge>
+          <Title level={3}>Parameters List</Title>
+          <Space>
+            {data.malariaone.allParameters.nodes.map((parameter) => (
+              <ParameterCard
+                key={parameter.id}
+                id={parameter.id}
+                type={parameter.type}
+                tags={parameter.tags}
+                name={parameter.name}
+              ></ParameterCard>
+            ))}
+          </Space>
+          <div ref={this.myRef}></div>
+        </Row>
       </Frame>
     );
   }
@@ -71,6 +80,8 @@ export const query = graphql`
         nodes {
           name
           id
+          tags
+          type
         }
       }
       allPapers {
