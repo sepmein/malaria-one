@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
-import { Typography, Row, Col, Divider, Badge } from "antd";
+import { Space, Typography, Row, Col, Divider, Badge } from "antd";
 import {
   SlidersOutlined,
   InfoCircleOutlined,
@@ -11,6 +11,8 @@ import {
 import TypeIndicator from "../../components/types";
 import Frame from "../../components/layout";
 import Paper from "../../components/paper";
+import Tag from "../../components/tags";
+import ParameterCard from "../../components/param";
 
 const { Title } = Typography;
 
@@ -23,6 +25,9 @@ class Param extends React.Component {
     const relatedPapers =
       this.props.data.malariaone.parameterById.parametersPapersByParametersId
         .nodes;
+    const relatedParameters =
+      this.props.data.malariaone.parameterById
+        .parametersParametersByParametersId.nodes;
     const relatedParametersCount =
       this.props.data.malariaone.parameterById
         .parametersParametersByParametersId.totalCount;
@@ -42,6 +47,7 @@ class Param extends React.Component {
           </Col>
           <Col flex={3}>
             <TagOutlined />
+            <Tag tags={param.tags} />
           </Col>
         </Row>
         <Row>
@@ -52,16 +58,29 @@ class Param extends React.Component {
         </Row>
         <Divider orientation="left"></Divider>
         <Row>
-          <Title level={2}>
-            Related Parameters
+          <Title level={3}>
+            Calculated By
             <Badge
               count={relatedParametersCount > 0 ? relatedParametersCount : 0}
             ></Badge>
+            Parameters
           </Title>
+        </Row>
+        <Row gutter={16}>
+          <Space>
+            {relatedParameters.map((param) => (
+              <ParameterCard
+                id={param.parameterByRelatedParametersId.id}
+                name={param.parameterByRelatedParametersId.name}
+                type={param.parameterByRelatedParametersId.type}
+                tags={param.parameterByRelatedParametersId.tags}
+              />
+            ))}
+          </Space>
         </Row>
         <Divider orientation="left"></Divider>
         <Row>
-          <Title level={2}>
+          <Title level={3}>
             Related Papers
             <Badge count={relatedPaperCount}></Badge>
           </Title>

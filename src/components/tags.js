@@ -15,10 +15,11 @@ const switchTagType = (tag) => {
       return <DeploymentUnitOutlined />;
   }
 };
-const Tags = ({ props }) => {
+const Tags = (props) => {
+  console.log(props.tags);
   return props.tags.map((tag) => {
-    switchTagType(tag);
-  });
+      return switchTagType(tag);
+    });
 };
 
 export default Tags;
