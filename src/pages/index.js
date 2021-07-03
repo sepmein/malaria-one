@@ -1,61 +1,71 @@
 import * as React from "react";
 import * as d3 from "d3";
 import Frame from "../components/layout";
-import { Badge, Button, Title, Row, Space } from "antd";
+import { Badge, Button, Row, Typography, Space, Divider, Col } from "antd";
 import { Link, graphql } from "gatsby";
 import ParameterCard from "../components/param";
+
+const { Title, Paragraph, Text } = Typography;
+
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
-    this.myRef = React.createRef();
-    this.dataset = [100, 200, 300, 400, 500];
+    // this.myRef = React.createRef();
+    // this.dataset = [100, 200, 300, 400, 500];
   }
   componentDidMount() {
-    console.log(this.myRef);
-    let size = 500;
-    let svg = d3
-      .select(this.myRef.current)
-      .append("svg")
-      .attr("width", size)
-      .attr("height", size);
-    let rect_width = 95;
-    svg
-      .selectAll("rect")
-      .data(this.dataset)
-      .enter()
-      .append("rect")
-      .attr("x", (d, i) => 5 + i * (rect_width + 5))
-      .attr("y", (d) => size - d)
-      .attr("width", rect_width)
-      .attr("height", (d) => d)
-      .attr("fill", "teal");
+    // console.log(this.myRef);
+    // let size = 500;
+    // let svg = d3
+    //   .select(this.myRef.current)
+    //   .append("svg")
+    //   .attr("width", size)
+    //   .attr("height", size);
+    // let rect_width = 95;
+    // svg
+    //   .selectAll("rect")
+    //   .data(this.dataset)
+    //   .enter()
+    //   .append("rect")
+    //   .attr("x", (d, i) => 5 + i * (rect_width + 5))
+    //   .attr("y", (d) => size - d)
+    //   .attr("width", rect_width)
+    //   .attr("height", (d) => d)
+    //   .attr("fill", "teal");
   }
   render() {
     const { data } = this.props;
+    const params = data.malariaone.allParameters.nodes;
     return (
       <Frame pageTitle="Malaria One">
+        <Typography>
+          <Title>Parameters in Malaria Models</Title>
+          <Paragraph>Website Description</Paragraph>
+        </Typography>
         <Row>
-          <Title level={1}>Parameters about the Malaria Models</Title>
-          <Badge count={data.malariaone.allPapers.totalCount}>
-            <Button>Papers</Button>
-          </Badge>
-          <Badge count={data.malariaone.allParameters.totalCount}>
-            <Button>Parameters</Button>
-          </Badge>
-          <Title level={3}>Parameters List</Title>
-          <Space>
-            {data.malariaone.allParameters.nodes.map((parameter) => (
-              <ParameterCard
-                key={parameter.id}
-                id={parameter.id}
-                type={parameter.type}
-                tags={parameter.tags}
-                name={parameter.name}
-              ></ParameterCard>
-            ))}
+          <Space size="middle">
+            <Badge count={data.malariaone.allPapers.totalCount}>
+              <Button>Papers</Button>
+            </Badge>
+            <Badge count={data.malariaone.allParameters.totalCount}>
+              <Button>Parameters</Button>
+            </Badge>
           </Space>
-          <div ref={this.myRef}></div>
         </Row>
+        <Divider />
+        <Title>Parameters</Title>
+        <Row gutter={[16, 16]}>
+          {params.map((p) => (
+            <ParameterCard
+              name={p.name}
+              id={p.id}
+              tags={p.tags}
+              type={p.type}
+            />
+          ))}
+        </Row>
+
+        {/* <div ref={this.myRef}></div> */}
       </Frame>
     );
   }

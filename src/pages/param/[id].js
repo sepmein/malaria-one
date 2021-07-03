@@ -67,16 +67,14 @@ class Param extends React.Component {
           </Title>
         </Row>
         <Row gutter={16}>
-          <Space>
-            {relatedParameters.map((param) => (
-              <ParameterCard
-                id={param.parameterByRelatedParametersId.id}
-                name={param.parameterByRelatedParametersId.name}
-                type={param.parameterByRelatedParametersId.type}
-                tags={param.parameterByRelatedParametersId.tags}
-              />
-            ))}
-          </Space>
+          {relatedParameters.map((param) => (
+            <ParameterCard
+              id={param.parameterByRelatedParametersId.id}
+              name={param.parameterByRelatedParametersId.name}
+              type={param.parameterByRelatedParametersId.type}
+              tags={param.parameterByRelatedParametersId.tags}
+            />
+          ))}
         </Row>
         <Divider orientation="left"></Divider>
         <Row>

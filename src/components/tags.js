@@ -16,10 +16,13 @@ const switchTagType = (tag) => {
   }
 };
 const Tags = (props) => {
-  console.log(props.tags);
-  return props.tags.map((tag) => {
+  if (props.tags) {
+    return props.tags.map((tag) => {
       return switchTagType(tag);
     });
+  } else {
+    return null;
+  }
 };
 
 export default Tags;
