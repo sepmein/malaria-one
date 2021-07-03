@@ -42,7 +42,7 @@ class Frame extends React.Component {
               <Link to="/about">About</Link>
             </Menu.Item>
             <Menu.Item key="5" icon={<GithubOutlined />}>
-              <a href="https://github.com/sepmein/malaria-one">Open Source</a>
+              <Link to="/open-source">Open Source</Link>
             </Menu.Item>
             <Menu.Item key="5" icon={<DatabaseOutlined />}>
               <a href="">Add More Data</a>

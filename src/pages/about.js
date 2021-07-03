@@ -1,19 +1,18 @@
-import * as React from 'react'
-import { Link } from 'gatsby'
+import * as React from "react";
+import { Link } from "gatsby";
+import Frame from "../components/layout";
+import { Typography } from "antd";
+
+const { Title, Text, Paragraph } = Typography;
 
 const AboutPage = () => {
-    return (
-        <main>
-            <title>
-                About me
-            </title>
-            <Link to="/">Back to Home</Link>
-            <h1>
-                About me
-            </h1>
+    return (<Frame>
+        <Typography>
+<Title>About</Title>
 
-        </main>
-    )
-}
+        </Typography>
 
-export default AboutPage
+        Contact: zhangc@who.int</Frame>);
+};
+
+export default AboutPage;
