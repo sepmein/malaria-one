@@ -1,22 +1,10 @@
 import * as React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import {
-  componentsLayoutDemoTopSide2,
-  logo,
-  antRowRtl,
-  siteLayoutBackground,
-} from "./layout.module.css";
 import { Layout, Menu, Breadcrumb, BackTop } from "antd";
 import {
-  UserOutlined,
-  LaptopOutlined,
-  NotificationOutlined,
+  DatabaseOutlined,
   DesktopOutlined,
-  PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
   HomeOutlined,
-  FileTextOutlined,
   SlidersOutlined,
   EyeOutlined,
   GithubOutlined,
@@ -24,7 +12,6 @@ import {
 import "antd/dist/antd.css";
 
 const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
 
 class Frame extends React.Component {
   state = {
@@ -52,10 +39,13 @@ class Frame extends React.Component {
               Papers
             </Menu.Item>
             <Menu.Item key="4" icon={<EyeOutlined />}>
-              <Link to='/about'>About</Link>
+              <Link to="/about">About</Link>
             </Menu.Item>
             <Menu.Item key="5" icon={<GithubOutlined />}>
               <a href="https://github.com/sepmein/malaria-one">Open Source</a>
+            </Menu.Item>
+            <Menu.Item key="5" icon={<DatabaseOutlined />}>
+              <a href="">Add More Data</a>
             </Menu.Item>
           </Menu>
         </Sider>
