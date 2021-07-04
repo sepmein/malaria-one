@@ -1,18 +1,13 @@
 import * as React from "react";
-import * as d3 from "d3";
+// import * as d3 from "d3";
 import Frame from "../components/layout";
-import { Badge, Button, Row, Typography, Space, Divider, Col } from "antd";
-import { Link, graphql } from "gatsby";
+import { Badge, Button, Row, Typography, Space, Divider } from "antd";
+import { graphql } from "gatsby";
 import ParameterCard from "../components/param";
 import "./index.less";
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph } = Typography;
 
 class IndexPage extends React.Component {
-  constructor(props) {
-    super(props);
-    // this.myRef = React.createRef();
-    // this.dataset = [100, 200, 300, 400, 500];
-  }
   componentDidMount() {
     // console.log(this.myRef);
     // let size = 500;
@@ -57,7 +52,6 @@ class IndexPage extends React.Component {
         <Row gutter={[16, 16]}>
           {params.map((p) => (
             <ParameterCard
-              key={p.id}
               name={p.name}
               id={p.id}
               tags={p.tags}

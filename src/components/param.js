@@ -1,9 +1,6 @@
 import * as React from "react";
-import * as dayjs from "dayjs";
 import { Card, Col } from "antd";
 import {
-  FileTextOutlined,
-  LinkOutlined,
   SlidersOutlined,
 } from "@ant-design/icons";
 import { card, cardTitle } from "./paper.module.css";

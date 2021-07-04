@@ -1,12 +1,10 @@
 import * as React from "react";
-import { Link, graphql } from "gatsby";
-import { Space, Typography, Row, Col, Divider, Badge } from "antd";
+import { graphql } from "gatsby";
+import { Typography, Row, Col, Divider, Badge } from "antd";
 import {
   SlidersOutlined,
   InfoCircleOutlined,
   TagOutlined,
-  ApartmentOutlined,
-  LineChartOutlined,
 } from "@ant-design/icons";
 import TypeIndicator from "../../components/types";
 import Frame from "../../components/layout";

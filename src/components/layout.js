@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
-import { Divider, Layout, Menu, Breadcrumb, BackTop } from "antd";
+import { Link } from "gatsby";
+import { Divider, Layout, Menu, BackTop } from "antd";
 import {
   DatabaseOutlined,
   FilePptOutlined,

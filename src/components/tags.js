@@ -13,6 +13,8 @@ const switchTagType = (tag) => {
       return <BugOutlined />;
     case "intervention":
       return <DeploymentUnitOutlined />;
+    default:
+      return null;
   }
 };
 const Tags = (props) => {

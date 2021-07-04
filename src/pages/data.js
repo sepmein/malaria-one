@@ -9,11 +9,17 @@ class Data extends React.Component {
       <Frame>
         <Typography>
           <Title>Add more data to This Project</Title>
-          <Title level={2} id="db">The Database and Data Structure</Title>
+          <Title level={2} id="db">
+            The Database and Data Structure
+          </Title>
           <Divider></Divider>
-          <Title level={2} id="interface">The Database Management Interface</Title>
+          <Title level={2} id="interface">
+            The Database Management Interface
+          </Title>
           <Divider></Divider>
-          <Title level={2} id="account">Request an Account</Title>
+          <Title level={2} id="account">
+            Request an Account
+          </Title>
         </Typography>
       </Frame>
     );

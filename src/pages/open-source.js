@@ -1,6 +1,6 @@
 import * as React from "react";
 import Frame from "../components/layout";
-import { Divider, Typography, Row, List } from "antd";
+import { Divider, Typography } from "antd";
 import { Link } from "gatsby";
 import {
   GithubFilled,
@@ -11,7 +11,6 @@ import {
 import "./open-source.custom.css";
 
 const { Title, Text, Paragraph } = Typography;
-const dependencies = ["aa", "bb"];
 class OpenSource extends React.Component {
   render() {
     return (

@@ -13,6 +13,8 @@ const switchParamType = (type) => {
       return <PercentageOutlined />;
     case "proportion":
       return <PieChartOutlined />;
+    default:
+      return null;
   }
 };
 
