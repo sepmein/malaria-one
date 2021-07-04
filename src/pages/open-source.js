@@ -35,8 +35,10 @@ class OpenSource extends React.Component {
           </Paragraph>
           <Divider orientation="left">Technologies</Divider>
           <Paragraph className="tech">
-            <DatabaseOutlined />
-            Database:{" "}
+            <Title level={3}>
+              <DatabaseOutlined />
+              Database
+            </Title>
             <Text code>
               <a href="http://postgresql.org">Postgresql</a>
             </Text>
@@ -49,26 +51,59 @@ class OpenSource extends React.Component {
             of <Text code>Postgresql</Text> data.
           </Paragraph>
           <Paragraph className="tech">
-            <ApiOutlined />
-            API: GraphQL. This project use{" "}
-            <a href="https://github.com/graphile/postgraphile">
-              PostGraphile
-            </a>{" "}
+            <Title level={3}>
+              <ApiOutlined />
+              API
+            </Title>
+            <Text code>GraphQL</Text>. This project use{" "}
+            <a href="https://github.com/graphile/postgraphile">PostGraphile</a>{" "}
             as middleware to expose <Text code>GraphqL</Text> api to the
             front-end.
           </Paragraph>
           <Paragraph className="tech">
-            <ChromeOutlined />
+            <Title level={3}>
+              <ChromeOutlined />
+              Front-End Framework
+            </Title>
+            <Text code>
+              <Link to="https://reactjs.org/">React.js</Link>
+            </Text>{" "}
+            +{" "}
+            <Text code>
+              <Link to="https://www.gatsbyjs.com/">Gatsby.js</Link>
+            </Text>{" "}
+            +{" "}
+            <Text code>
+              <Link to="https://ant.design/">Ant.Design</Link>
+            </Text>
+          </Paragraph>
+          <Divider orientation="left">
+            Report Issues & Suggest New Features
+          </Divider>
+          <Paragraph>
+            <Link to="https://github.com/sepmein/malaria-one/issues">
+              <GithubFilled /> malaria-one/issues
+            </Link>
           </Paragraph>
           <Divider orientation="left">Dependencies</Divider>
-          <List
-            size="large"
-            header={<div>Dependencies List</div>}
-            footer={<div>Footer</div>}
-            bordered
-            dataSource={dependencies}
-            renderItem={(item) => <List.Item>{item}</List.Item>}
-          />
+          <Paragraph>
+            <Link to="https://github.com/sepmein/malaria-one/network/dependencies">
+              <GithubFilled />
+              malaria-one/dependencies
+            </Link>{" "}
+          </Paragraph>
+          <Divider orientation="left">Recent Code Commits</Divider>
+          <Paragraph>
+            <Link to="https://github.com/sepmein/malaria-one/graphs/commit-activity">
+              <GithubFilled /> malaria-one/commit-activity
+            </Link>
+          </Paragraph>
+          <Divider orientation="left">Contributors</Divider>
+          <Paragraph>
+            <Link to="https://github.com/sepmein/malaria-one/graphs/contributors">
+              <GithubFilled /> malaria-one/contributors
+            </Link>
+          </Paragraph>
         </Typography>
       </Frame>
     );

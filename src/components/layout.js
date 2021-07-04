@@ -36,7 +36,7 @@ class Frame extends React.Component {
               <Link>Parameters</Link>
             </Menu.Item>
             <Menu.Item key="3" icon={<DesktopOutlined />}>
-              Papers
+              <Link to="/paper">Papers</Link>
             </Menu.Item>
             <Menu.Item key="4" icon={<EyeOutlined />}>
               <Link to="/about">About</Link>
@@ -53,7 +53,7 @@ class Frame extends React.Component {
           <Header className="site-layout-background" style={{ padding: 0 }} />
           <Content style={{ margin: "0 16px" }}>{children}</Content>
           <Footer style={{ textAlign: "center" }}>
-            Ant Design ©2018 Created by Ant UED
+            Malaria One ©2021 Created by Chunzhe ZHANG
           </Footer>
         </Layout>
       </Layout>
