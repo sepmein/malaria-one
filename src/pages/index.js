@@ -4,7 +4,7 @@ import Frame from "../components/layout";
 import { Badge, Button, Row, Typography, Space, Divider, Col } from "antd";
 import { Link, graphql } from "gatsby";
 import ParameterCard from "../components/param";
-
+import "./index.less";
 const { Title, Paragraph, Text } = Typography;
 
 class IndexPage extends React.Component {
