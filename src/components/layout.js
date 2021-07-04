@@ -3,7 +3,7 @@ import { Link, useStaticQuery, graphql } from "gatsby";
 import { Divider, Layout, Menu, Breadcrumb, BackTop } from "antd";
 import {
   DatabaseOutlined,
-  DesktopOutlined,
+  FilePptOutlined,
   HomeOutlined,
   SlidersOutlined,
   EyeOutlined,
@@ -35,7 +35,7 @@ class Frame extends React.Component {
             <Menu.Item key="2" icon={<SlidersOutlined />}>
               <Link>Parameters</Link>
             </Menu.Item>
-            <Menu.Item key="3" icon={<DesktopOutlined />}>
+            <Menu.Item key="3" icon={<FilePptOutlined />}>
               <Link to="/paper">Papers</Link>
             </Menu.Item>
             <Divider></Divider>

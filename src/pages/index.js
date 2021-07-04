@@ -57,6 +57,7 @@ class IndexPage extends React.Component {
         <Row gutter={[16, 16]}>
           {params.map((p) => (
             <ParameterCard
+              key={p.id}
               name={p.name}
               id={p.id}
               tags={p.tags}

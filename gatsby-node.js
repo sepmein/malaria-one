@@ -1,8 +1,8 @@
 const path = require(`path`);
 
-exports.onCreateNode = ({ node }) => {
-  console.log(`Node created of type "${node.internal.type}"`);
-};
+// exports.onCreateNode = ({ node }) => {
+//   console.log(`Node created of type "${node.internal.type}"`);
+// };
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
@@ -28,7 +28,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     `
   );
-  console.log(JSON.stringify(result, null, 4));
+  // console.log(JSON.stringify(result, null, 4));
   result.data.malariaone.allParameters.nodes.forEach((node) => {
     createPage({
       path: `/param/${node.id}`,
