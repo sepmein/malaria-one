@@ -3,6 +3,7 @@ import {
   DashboardOutlined,
   PercentageOutlined,
   PieChartOutlined,
+  FieldTimeOutlined,
 } from "@ant-design/icons";
 
 const switchParamType = (type) => {
@@ -13,6 +14,8 @@ const switchParamType = (type) => {
       return <PercentageOutlined />;
     case "proportion":
       return <PieChartOutlined />;
+    case "duration":
+      return <FieldTimeOutlined />;
     default:
       return null;
   }

@@ -5,6 +5,7 @@ import { Badge, Button, Row, Typography, Space, Divider } from "antd";
 import { graphql } from "gatsby";
 import ParameterCard from "../components/param";
 import "./index.less";
+import * as echarts from "echarts/core";
 const { Title, Paragraph } = Typography;
 
 class IndexPage extends React.Component {
@@ -34,8 +35,18 @@ class IndexPage extends React.Component {
     return (
       <Frame pageTitle="Malaria One">
         <Typography>
-          <Title>Parameters in Malaria Models</Title>
-          <Paragraph>Website Description</Paragraph>
+          <Title>Understand Malaria Modelling</Title>
+          <Paragraph>
+            Malaria is an disease. To eliminate malaria and reduce mortarlity,
+            WHO release 2030 Global Technical Strategy. Nowadays, more
+            mathematical modelling tools have been used to predict incidences,
+            economic analysis
+          </Paragraph>
+          <Paragraph>
+            Malaria One is a tool for policy makers and researchers to better
+            understand malaria modelling, to choose a reasonalble assumptions
+            and to better parametrize models.
+          </Paragraph>
         </Typography>
         <Row>
           <Space size="middle">
