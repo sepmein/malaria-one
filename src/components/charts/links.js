@@ -45,7 +45,7 @@ import {
   // MarkPointComponent,
   // MarkLineComponent,
   // MarkAreaComponent,
-  // LegendComponent,
+  LegendComponent,
   // LegendScrollComponent,
   // LegendPlainComponent,
   // DataZoomComponent,
@@ -63,30 +63,14 @@ import {
   // SVGRenderer,
 } from "echarts/renderers";
 
-import compareSortedArray from "../../../util/compareSortedArray";
+echarts.use([
+  LegendComponent,
+  TooltipComponent,
+  TitleComponent,
+  GraphChart,
+  CanvasRenderer,
+]);
 
-echarts.use([TooltipComponent, TitleComponent, GraphChart, CanvasRenderer]);
-
-const switchCategories = (category) => {
-  switch (category) {
-    case compareSortedArray(category, ["human"]):
-      return 0;
-    case compareSortedArray(category, ["vector"]):
-      return 1;
-    case compareSortedArray(category, ["human", "vector"]):
-      return 2;
-    case compareSortedArray(category, ["intervention"]):
-      return 3;
-    case compareSortedArray(category, ["human", "intervention"]):
-      return 4;
-    case compareSortedArray(category, ["vector", "intervention"]):
-      return 5;
-    case compareSortedArray(category, ["human", "vector", "intervention"]):
-      return 6;
-    default:
-      return 7;
-  }
-};
 const generateLinksAndTypeCategories = (params, links) => {
   // get unique categories
   // https://stackoverflow.com/a/14438954/886198
@@ -114,14 +98,20 @@ const generateOptions = (graphType = "force", params, links) => {
   const { generatedData, generatedLinks, uniqueTagsCategories } =
     generateLinksAndTypeCategories(params, links);
   let options = {
-    title: { text: "Parameters Connections Graph" },
-    //legend: [{ data: uniqueTagsCategories }],
+    title: { text: "Parameters Connections Graph", bottom: "10%" },
+    legend: [
+      {
+        data: uniqueTagsCategories,
+      },
+    ],
     series: [
       {
         layout: graphType,
         type: "graph",
         name: "Malaria Modelling Parameters' Connections Graph",
-        categories: uniqueTagsCategories,
+        categories: uniqueTagsCategories.map((tag) => {
+          return { name: tag };
+        }),
         roam: true,
         edgeSymbol: ["none", "arrow"],
         edgeSymbolSize: 10,
@@ -144,8 +134,14 @@ const generateOptions = (graphType = "force", params, links) => {
         autoCurveness: true,
         zoom: 2,
         nodeScaleRatio: 2,
+        tooltip: {
+          position: "right",
+        },
       },
     ],
+    tooltip: {
+      show: true,
+    },
   };
   switch (graphType) {
     case "circular":
