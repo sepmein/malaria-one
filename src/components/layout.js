@@ -28,13 +28,27 @@ class Frame extends React.Component {
         <BackTop />
         <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
           <div className="logo" />
-          <Menu theme="light" defaultSelectedKeys={["1"]} mode="inline">
-            <Menu.Item key="1" icon={<HomeOutlined />}>
+          <Menu
+            theme="light"
+            defaultSelectedKeys={["home"]}
+            defaultOpenKeys={["parameters"]}
+            mode="inline"
+          >
+            <Menu.Item key="home" icon={<HomeOutlined />}>
               <Link to="/">Home</Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<SlidersOutlined />}>
-              <Link to="/parameters">Parameters</Link>
-            </Menu.Item>
+            <SubMenu
+              key="parameters"
+              icon={<SlidersOutlined />}
+              title="Parameters"
+            >
+              <Menu.Item key="parameters.list">
+                <Link to="/parameters">List</Link>
+              </Menu.Item>
+              <Menu.Item key="parameters.graph">
+                <Link to="/graph">Graph</Link>
+              </Menu.Item>
+            </SubMenu>
             <Menu.Item key="3" icon={<FilePptOutlined />}>
               <Link to="/paper">Papers</Link>
             </Menu.Item>

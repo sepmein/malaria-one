@@ -6,6 +6,7 @@ import { graphql } from "gatsby";
 import ParameterCard from "../components/param";
 import "./index.less";
 import GraphLinks from "../components/charts/links";
+import _, { sample } from "underscore";
 const { Title, Paragraph } = Typography;
 
 class IndexPage extends React.Component {
@@ -63,7 +64,7 @@ class IndexPage extends React.Component {
         <Divider />
         <Title>Parameters</Title>
         <Row gutter={[16, 16]}>
-          {params.map((p) => (
+          {_.sample(params, 12).map((p) => (
             <ParameterCard
               key={p.id}
               name={p.name}
