@@ -5,7 +5,7 @@ import { Badge, Button, Row, Typography, Space, Divider } from "antd";
 import { graphql } from "gatsby";
 import ParameterCard from "../components/param";
 import "./index.less";
-import * as echarts from "echarts/core";
+import GraphLinks from "../components/charts/links";
 const { Title, Paragraph } = Typography;
 
 class IndexPage extends React.Component {
@@ -32,6 +32,7 @@ class IndexPage extends React.Component {
   render() {
     const { data } = this.props;
     const params = data.malariaone.allParameters.nodes;
+    const links = data.malariaone.allParametersParameters.nodes;
     return (
       <Frame pageTitle="Malaria One">
         <Typography>
@@ -58,11 +59,13 @@ class IndexPage extends React.Component {
             </Badge>
           </Space>
         </Row>
+        <GraphLinks links={links} params={params} />
         <Divider />
         <Title>Parameters</Title>
         <Row gutter={[16, 16]}>
           {params.map((p) => (
             <ParameterCard
+              key={p.id}
               name={p.name}
               id={p.id}
               tags={p.tags}
@@ -98,6 +101,22 @@ export const query = graphql`
           id
           tags
           type
+        }
+      }
+      allParametersParameters {
+        nodes {
+          parameterByParametersId {
+            id
+            name
+            tags
+            type
+          }
+          parameterByRelatedParametersId {
+            id
+            name
+            tags
+            type
+          }
         }
       }
       allPapers {

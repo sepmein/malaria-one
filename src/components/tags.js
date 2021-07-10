@@ -20,7 +20,7 @@ const switchTagType = (tag) => {
 const Tags = (props) => {
   if (props.tags) {
     return props.tags.map((tag) => {
-      return switchTagType(tag);
+      return <React.Fragment key={tag}>{switchTagType(tag)}</React.Fragment>;
     });
   } else {
     return null;
