@@ -1,6 +1,16 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { Typography, Row, Col, Divider, Badge } from "antd";
+import {
+  Empty,
+  PageHeader,
+  Descriptions,
+  Typography,
+  Row,
+  Col,
+  Divider,
+  Badge,
+  Avatar,
+} from "antd";
 import {
   SlidersOutlined,
   InfoCircleOutlined,
@@ -11,6 +21,9 @@ import Frame from "../../components/layout";
 import Paper from "../../components/paper";
 import Tag from "../../components/tags";
 import ParameterCard from "../../components/param";
+import * as dayjs from "dayjs";
+import * as relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 const { Title } = Typography;
 
@@ -29,25 +42,37 @@ class Param extends React.Component {
     const relatedParametersCount =
       this.props.data.malariaone.parameterById
         .parametersParametersByParametersId.totalCount;
+    const routes = [
+      { path: "/home", breadcrumbName: "home" },
+      { path: "/parameters", breadcrumbName: "parameters" },
+    ];
     return (
       <Frame>
         {/* Parameter Name */}
-        <Row>
-          <Title>
-            <SlidersOutlined />
-            {param.name.replace(/\b(\w)/g, (s) => s.toUpperCase())}
-          </Title>
-        </Row>
+        <PageHeader
+          onBack={() => null}
+          title={param.name.replace(/\b(\w)/g, (s) => s.toUpperCase())}
+          avatar={{ icon: <SlidersOutlined /> }}
+          breadcrumb={{ routes }}
+        >
+          <Descriptions size="middle" column={3}>
+            <Descriptions.Item label="type">
+              <TypeIndicator type={param.type} />
+            </Descriptions.Item>
+            <Descriptions.Item label="tags">
+              <Tag tags={param.tags} />
+            </Descriptions.Item>
+            <Descriptions.Item label="creation time">
+              {dayjs(param.dateCreated).fromNow()}
+            </Descriptions.Item>
+            {param.dataUpdated ? (
+              <Descriptions.Item label="update time">
+                {dayjs(param.dateUpdated).fromNow()}
+              </Descriptions.Item>
+            ) : null}
+          </Descriptions>
+        </PageHeader>
         {/* Parameter description */}
-        <Row>
-          <Col flex={3}>
-            <TypeIndicator type={param.type} />
-          </Col>
-          <Col flex={3}>
-            <TagOutlined />
-            <Tag tags={param.tags} />
-          </Col>
-        </Row>
         <Row>
           <Col>
             <InfoCircleOutlined />
@@ -57,28 +82,36 @@ class Param extends React.Component {
         <Divider orientation="left"></Divider>
         <Row>
           <Title level={3}>
-            Calculated By
+            Calculated By{" "}
             <Badge
-              count={relatedParametersCount > 0 ? relatedParametersCount : 0}
-            ></Badge>
+              count={relatedParametersCount}
+              style={{ backgroundColor: "#52c41a" }}
+            ></Badge>{" "}
             Parameters
           </Title>
         </Row>
         <Row gutter={16}>
-          {relatedParameters.map((param) => (
-            <ParameterCard
-              id={param.parameterByRelatedParametersId.id}
-              name={param.parameterByRelatedParametersId.name}
-              type={param.parameterByRelatedParametersId.type}
-              tags={param.parameterByRelatedParametersId.tags}
-            />
-          ))}
+          {relatedParameters.length ? (
+            relatedParameters.map((param) => (
+              <ParameterCard
+                id={param.parameterByRelatedParametersId.id}
+                name={param.parameterByRelatedParametersId.name}
+                type={param.parameterByRelatedParametersId.type}
+                tags={param.parameterByRelatedParametersId.tags}
+              />
+            ))
+          ) : (
+            <Empty />
+          )}
         </Row>
         <Divider orientation="left"></Divider>
         <Row>
           <Title level={3}>
-            Related Papers
-            <Badge count={relatedPaperCount}></Badge>
+            Related Papers:{" "}
+            <Badge
+              count={relatedPaperCount}
+              style={{ backgroundColor: "#52c41a" }}
+            ></Badge>
           </Title>
         </Row>
         <Row gutter={16}>
