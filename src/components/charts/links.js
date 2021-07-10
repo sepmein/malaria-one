@@ -1,6 +1,71 @@
 import * as React from "react";
-import ReactEcharts from "echarts-for-react";
+import ReactEchartsCore from "echarts-for-react/lib/core";
+import * as echarts from "echarts/core";
+import {
+  // LineChart,
+  //BarChart,
+  // PieChart,
+  // ScatterChart,
+  // RadarChart,
+  // MapChart,
+  // TreeChart,
+  // TreemapChart,
+  GraphChart,
+  // GaugeChart,
+  // FunnelChart,
+  // ParallelChart,
+  // SankeyChart,
+  // BoxplotChart,
+  // CandlestickChart,
+  // EffectScatterChart,
+  // LinesChart,
+  // HeatmapChart,
+  // PictorialBarChart,
+  // ThemeRiverChart,
+  // SunburstChart,
+  // CustomChart,
+} from "echarts/charts";
+// import components, all suffixed with Component
+import {
+  // GridSimpleComponent,
+  //GridComponent,
+  // PolarComponent,
+  // RadarComponent,
+  // GeoComponent,
+  // SingleAxisComponent,
+  // ParallelComponent,
+  // CalendarComponent,
+  // GraphicComponent,
+  // ToolboxComponent,
+  TooltipComponent,
+  // AxisPointerComponent,
+  // BrushComponent,
+  TitleComponent,
+  // TimelineComponent,
+  // MarkPointComponent,
+  // MarkLineComponent,
+  // MarkAreaComponent,
+  // LegendComponent,
+  // LegendScrollComponent,
+  // LegendPlainComponent,
+  // DataZoomComponent,
+  // DataZoomInsideComponent,
+  // DataZoomSliderComponent,
+  // VisualMapComponent,
+  // VisualMapContinuousComponent,
+  // VisualMapPiecewiseComponent,
+  // AriaComponent,
+  // TransformComponent,
+  //DatasetComponent,
+} from "echarts/components";
+import {
+  CanvasRenderer,
+  // SVGRenderer,
+} from "echarts/renderers";
+
 import compareSortedArray from "../../../util/compareSortedArray";
+
+echarts.use([TooltipComponent, TitleComponent, GraphChart, CanvasRenderer]);
 
 const switchCategories = (category) => {
   switch (category) {
@@ -61,7 +126,7 @@ const generateOptions = (graphType = "force", params, links) => {
         edgeSymbol: ["none", "arrow"],
         edgeSymbolSize: 10,
         label: {
-          show: true,
+          show: false,
         },
         labelLayout: {
           hideOverlap: true,
@@ -76,6 +141,9 @@ const generateOptions = (graphType = "force", params, links) => {
         lineStyle: {
           color: "source",
         },
+        autoCurveness: true,
+        zoom: 2,
+        nodeScaleRatio: 2,
       },
     ],
   };
@@ -101,7 +169,13 @@ class GraphLinks extends React.Component {
     const graphType = this.props.type;
     const params = this.props.params;
     const links = this.props.links;
-    return <ReactEcharts option={generateOptions(graphType, params, links)} />;
+    return (
+      <ReactEchartsCore
+        echarts={echarts}
+        option={generateOptions(graphType, params, links)}
+        style={{ height: "600px" }}
+      />
+    );
   }
 }
 
