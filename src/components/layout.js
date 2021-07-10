@@ -33,7 +33,7 @@ class Frame extends React.Component {
               <Link to="/">Home</Link>
             </Menu.Item>
             <Menu.Item key="2" icon={<SlidersOutlined />}>
-              <Link>Parameters</Link>
+              <Link to="/parameters">Parameters</Link>
             </Menu.Item>
             <Menu.Item key="3" icon={<FilePptOutlined />}>
               <Link to="/paper">Papers</Link>
