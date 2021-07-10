@@ -115,13 +115,17 @@ class Param extends React.Component {
           </Title>
         </Row>
         <Row gutter={16}>
-          {relatedPapers.map((paper) => (
-            <Paper
-              title={paper.paperByPaperId.title}
-              doi={paper.paperByPaperId.doi}
-              publishedAt={paper.paperByPaperId.publishedAt}
-            />
-          ))}
+          {relatedPaperCount ? (
+            relatedPapers.map((paper) => (
+              <Paper
+                title={paper.paperByPaperId.title}
+                doi={paper.paperByPaperId.doi}
+                publishedAt={paper.paperByPaperId.publishedAt}
+              />
+            ))
+          ) : (
+            <Empty />
+          )}
         </Row>
       </Frame>
     );

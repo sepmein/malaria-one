@@ -14,3 +14,12 @@
 .site-layout-background {
   background: #fff;
 }
+
+.logo-style {
+  align: center;
+  height: 100px;
+}
+
+.heading {
+  text-align: center;
+}

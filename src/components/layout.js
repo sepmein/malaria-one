@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import { Divider, Layout, Menu, BackTop } from "antd";
+import { Image, Divider, Layout, Menu, BackTop } from "antd";
 import {
   DatabaseOutlined,
   FilePptOutlined,
@@ -10,6 +10,8 @@ import {
   GithubOutlined,
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
+import logo from "../images/logo-mark-work-landscape-small.png";
+import { heading } from "./layout.module.css";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -73,8 +75,8 @@ class Frame extends React.Component {
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }}>
-            Malaria One
+          <Header className={heading}>
+            <Image src={logo} preview={false} placeholder="Malaria.ONE"></Image>
           </Header>
           <Content style={{ margin: "0 16px" }}>{children}</Content>
           <Footer style={{ textAlign: "center" }}>
