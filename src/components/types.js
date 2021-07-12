@@ -1,11 +1,11 @@
 import * as React from "react";
+import { Tooltip } from "antd";
 import {
   DashboardOutlined,
   PercentageOutlined,
   PieChartOutlined,
   FieldTimeOutlined,
 } from "@ant-design/icons";
-import { Tooltip } from "antd";
 
 const switchParamType = (type) => {
   switch (type) {

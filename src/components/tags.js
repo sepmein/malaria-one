@@ -5,25 +5,26 @@ import {
   BugOutlined,
   DeploymentUnitOutlined,
 } from "@ant-design/icons";
+import { green, orange, magenta } from "@ant-design/colors";
 
 const switchTagType = (tag) => {
   switch (tag) {
     case "human":
       return (
         <Tooltip placement="bottom" title="Human">
-          <UserOutlined />
+          <UserOutlined style={{ color: green[3] }} />
         </Tooltip>
       );
     case "vector":
       return (
         <Tooltip placement="bottom" title="Vector">
-          <BugOutlined />
+          <BugOutlined style={{ color: orange[3] }} />
         </Tooltip>
       );
     case "intervention":
       return (
         <Tooltip placement="bottom" title="Intervention">
-          <DeploymentUnitOutlined />
+          <DeploymentUnitOutlined style={{ color: magenta[3] }} />
         </Tooltip>
       );
     default:

@@ -1,4 +1,5 @@
 import * as React from "react";
+import _, { sample } from "underscore";
 import Frame from "../components/layout";
 import {
   Button,
@@ -13,10 +14,9 @@ import {
 import { SlidersOutlined } from "@ant-design/icons";
 import { Link, graphql } from "gatsby";
 import ParameterCard from "../components/param";
-import _, { sample } from "underscore";
 import { statisticRow, statisticCard } from "./index.module.css";
-import "./index.less";
 import GraphLinks from "../components/charts/links";
+import "./index.less";
 const { Title, Paragraph } = Typography;
 
 class IndexPage extends React.Component {

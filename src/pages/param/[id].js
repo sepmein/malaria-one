@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql } from "gatsby";
+import { graphql, navigate } from "gatsby";
 import {
   Empty,
   PageHeader,
@@ -50,7 +50,8 @@ class Param extends React.Component {
       <Frame>
         {/* Parameter Name */}
         <PageHeader
-          onBack={() => null}
+          /*https://stackoverflow.com/a/66572589/886198 naviagte function, check here*/
+          onBack={() => navigate(-1)}
           title={param.name.replace(/\b(\w)/g, (s) => s.toUpperCase())}
           avatar={{ icon: <SlidersOutlined /> }}
           breadcrumb={{ routes }}
@@ -73,11 +74,12 @@ class Param extends React.Component {
           </Descriptions>
         </PageHeader>
         {/* Parameter description */}
+        <Divider orientation="left"></Divider>
         <Row>
-          <Col>
-            <InfoCircleOutlined />
-            {param.definition}
-          </Col>
+          <Title level={3}>Descriptions</Title>
+        </Row>
+        <Row>
+          <Col>{param.definition}</Col>
         </Row>
         <Divider orientation="left"></Divider>
         <Row>
