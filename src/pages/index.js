@@ -1,22 +1,22 @@
 import * as React from "react";
-// import * as d3 from "d3";
 import Frame from "../components/layout";
 import {
+  Button,
+  PageHeader,
+  Avatar,
   Statistic,
   Col,
-  Badge,
-  Button,
   Row,
   Typography,
-  Space,
   Divider,
 } from "antd";
-import { graphql } from "gatsby";
+import { SlidersOutlined } from "@ant-design/icons";
+import { Link, graphql } from "gatsby";
 import ParameterCard from "../components/param";
+import _, { sample } from "underscore";
+import { statisticRow, statisticCard } from "./index.module.css";
 import "./index.less";
 import GraphLinks from "../components/charts/links";
-import _, { sample } from "underscore";
-import { statisticCard } from "./index.module.css";
 const { Title, Paragraph } = Typography;
 
 class IndexPage extends React.Component {
@@ -32,10 +32,9 @@ class IndexPage extends React.Component {
         <Typography>
           <Title>Understand Malaria Modelling</Title>
           <Paragraph>
-            Malaria is an disease. To eliminate malaria and reduce mortarlity,
-            WHO release 2030 Global Technical Strategy. Nowadays, more
-            mathematical modelling tools have been used to predict incidences,
-            economic analysis
+            To eliminate malaria and reduce mortarlity, WHO release 2030 Global
+            Technical Strategy. Nowadays, more mathematical modelling tools have
+            been used to predict incidences, economic analysis
           </Paragraph>
           <Paragraph>
             Malaria One is a tool for policy makers and researchers to better
@@ -43,7 +42,8 @@ class IndexPage extends React.Component {
             and to better parametrize models.
           </Paragraph>
         </Typography>
-        <Row gutter={16} justify="center">
+        <Divider />
+        <Row gutter={16} className={statisticRow} justify="center">
           <Col span={8}>
             <Statistic
               title="Papers"
@@ -66,9 +66,19 @@ class IndexPage extends React.Component {
             />
           </Col>
         </Row>
+        <Divider />
         <GraphLinks links={links} params={params} />
         <Divider />
-        <Title>Parameters</Title>
+        <PageHeader
+          title="Parameters"
+          subTitle="in malaria mathematical models"
+          avatar={{ icon: <SlidersOutlined /> }}
+          extra={
+            <Link to="/parameters">
+              <Button>more</Button>
+            </Link>
+          }
+        ></PageHeader>
         <Row gutter={[16, 16]}>
           {_.sample(params, 12).map((p) => (
             <ParameterCard
