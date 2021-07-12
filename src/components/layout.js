@@ -55,9 +55,6 @@ class Frame extends React.Component {
               <Link to="/paper">Papers</Link>
             </Menu.Item>
             <Divider></Divider>
-            <Menu.Item key="4" icon={<EyeOutlined />}>
-              <Link to="/about">About</Link>
-            </Menu.Item>
             <Menu.Item key="5" icon={<GithubOutlined />}>
               <Link to="/open-source">Open Source</Link>
             </Menu.Item>
@@ -72,6 +69,9 @@ class Frame extends React.Component {
                 <Link to="/data#request">Request an Account</Link>
               </Menu.Item>
             </SubMenu>
+            <Menu.Item key="about" icon={<EyeOutlined />}>
+              <Link to="/about">About</Link>
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">

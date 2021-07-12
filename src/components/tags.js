@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Tooltip } from "antd";
 import {
   UserOutlined,
   BugOutlined,
@@ -8,11 +9,23 @@ import {
 const switchTagType = (tag) => {
   switch (tag) {
     case "human":
-      return <UserOutlined />;
+      return (
+        <Tooltip placement="bottom" title="Human">
+          <UserOutlined />
+        </Tooltip>
+      );
     case "vector":
-      return <BugOutlined />;
+      return (
+        <Tooltip placement="bottom" title="Vector">
+          <BugOutlined />
+        </Tooltip>
+      );
     case "intervention":
-      return <DeploymentUnitOutlined />;
+      return (
+        <Tooltip placement="bottom" title="Intervention">
+          <DeploymentUnitOutlined />
+        </Tooltip>
+      );
     default:
       return null;
   }

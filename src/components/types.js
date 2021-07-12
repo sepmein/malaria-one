@@ -5,17 +5,34 @@ import {
   PieChartOutlined,
   FieldTimeOutlined,
 } from "@ant-design/icons";
+import { Tooltip } from "antd";
 
 const switchParamType = (type) => {
   switch (type) {
     case "rate":
-      return <DashboardOutlined />;
+      return (
+        <Tooltip placement="bottom" title="rate">
+          <DashboardOutlined />
+        </Tooltip>
+      );
     case "possibility":
-      return <PercentageOutlined />;
+      return (
+        <Tooltip placement="bottom" title="possibility">
+          <PercentageOutlined />
+        </Tooltip>
+      );
     case "proportion":
-      return <PieChartOutlined />;
+      return (
+        <Tooltip placement="bottom" title="proportion">
+          <PieChartOutlined />
+        </Tooltip>
+      );
     case "duration":
-      return <FieldTimeOutlined />;
+      return (
+        <Tooltip placement="bottom" title="duration">
+          <FieldTimeOutlined />
+        </Tooltip>
+      );
     default:
       return null;
   }
