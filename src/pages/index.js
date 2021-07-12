@@ -1,12 +1,22 @@
 import * as React from "react";
 // import * as d3 from "d3";
 import Frame from "../components/layout";
-import { Badge, Button, Row, Typography, Space, Divider } from "antd";
+import {
+  Statistic,
+  Col,
+  Badge,
+  Button,
+  Row,
+  Typography,
+  Space,
+  Divider,
+} from "antd";
 import { graphql } from "gatsby";
 import ParameterCard from "../components/param";
 import "./index.less";
 import GraphLinks from "../components/charts/links";
 import _, { sample } from "underscore";
+import { statisticCard } from "./index.module.css";
 const { Title, Paragraph } = Typography;
 
 class IndexPage extends React.Component {
@@ -14,6 +24,9 @@ class IndexPage extends React.Component {
     const { data } = this.props;
     const params = data.malariaone.allParameters.nodes;
     const links = data.malariaone.allParametersParameters.nodes;
+    const totalParams = data.malariaone.allParameters.totalCount;
+    const totalPapers = data.malariaone.allPapers.totalCount;
+    const totalValues = data.malariaone.allValues.totalCount;
     return (
       <Frame pageTitle="Malaria One">
         <Typography>
@@ -30,15 +43,28 @@ class IndexPage extends React.Component {
             and to better parametrize models.
           </Paragraph>
         </Typography>
-        <Row>
-          <Space size="middle">
-            <Badge count={data.malariaone.allPapers.totalCount}>
-              <Button>Papers</Button>
-            </Badge>
-            <Badge count={data.malariaone.allParameters.totalCount}>
-              <Button>Parameters</Button>
-            </Badge>
-          </Space>
+        <Row gutter={16} justify="center">
+          <Col span={8}>
+            <Statistic
+              title="Papers"
+              className={statisticCard}
+              value={totalPapers}
+            />
+          </Col>
+          <Col span={8}>
+            <Statistic
+              className={statisticCard}
+              title="Parameters"
+              value={totalParams}
+            />
+          </Col>
+          <Col span={8}>
+            <Statistic
+              className={statisticCard}
+              title="Values"
+              value={totalValues}
+            />
+          </Col>
         </Row>
         <GraphLinks links={links} params={params} />
         <Divider />
@@ -54,23 +80,10 @@ class IndexPage extends React.Component {
             />
           ))}
         </Row>
-
-        {/* <div ref={this.myRef}></div> */}
       </Frame>
     );
   }
 }
-
-// markup
-// const IndexPage = ({ data }) => {
-//   return (
-//     <Layout pageTitle="Malaria One">
-//       <h1>Parameters about the Malaria Models</h1>
-//       <p>Parameters Count: {data.malariaone.allParameters.totalCount}</p>
-//       <p>Papers Count: {data.malariaone.allPapers.totalCount}</p>
-//     </Layout>
-//   );
-// };
 
 export const query = graphql`
   query getParametersCount {
@@ -101,6 +114,9 @@ export const query = graphql`
         }
       }
       allPapers {
+        totalCount
+      }
+      allValues {
         totalCount
       }
     }
