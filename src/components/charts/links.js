@@ -162,7 +162,7 @@ const generateOptions = (graphType = "force", params, links) => {
 
 class GraphLinks extends React.Component {
   render() {
-    const graphType = this.props.type;
+    const graphType = this.props.layout;
     const params = this.props.params;
     const links = this.props.links;
     return (
