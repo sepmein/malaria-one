@@ -145,10 +145,9 @@ const generateOptions = (graphType = "force", params, links) => {
   };
   switch (graphType) {
     case "circular":
+      options.series[0].zoom = 1;
       break;
     default:
-      // default case is force layout
-      // see more docs in https://echarts.apache.org/zh/option.html#series-graph.force.initLayout
       options.series[0].force = {
         repulsion: 50,
         gravity: 0.1,
@@ -160,16 +159,30 @@ const generateOptions = (graphType = "force", params, links) => {
   return options;
 };
 
+const getGraphSize = (size) => {
+  switch (size) {
+    case "large":
+      return "1000px";
+    case "medium":
+      return "800px";
+    case "small":
+      return "600px";
+    default:
+      return "600px";
+  }
+};
+
 class GraphLinks extends React.Component {
   render() {
     const graphType = this.props.layout;
     const params = this.props.params;
     const links = this.props.links;
+    const size = this.props.size;
     return (
       <ReactEchartsCore
         echarts={echarts}
         option={generateOptions(graphType, params, links)}
-        style={{ height: "600px" }}
+        style={{ height: getGraphSize(size) }}
       />
     );
   }
