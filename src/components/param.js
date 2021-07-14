@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Card, Col } from "antd";
 import { SlidersOutlined } from "@ant-design/icons";
-import { card, cardTitle } from "./paper.module.css";
+import { cardTitle } from "./paper.module.css";
 import TypeIndicator from "./types";
 import Tags from "./tags";
 import { Link } from "gatsby";

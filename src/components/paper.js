@@ -2,12 +2,9 @@ import * as React from "react";
 import * as dayjs from "dayjs";
 import { Card, Col } from "antd";
 import { FileTextOutlined, LinkOutlined } from "@ant-design/icons";
-import { card, cardTitle } from "./paper.module.css";
+import { cardTitle } from "./paper.module.css";
 
 class Paper extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <Col span={8}>

@@ -4,7 +4,6 @@ import Frame from "../components/layout";
 import {
   Button,
   PageHeader,
-  Avatar,
   Statistic,
   Col,
   Row,

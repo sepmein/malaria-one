@@ -1,7 +1,7 @@
 import * as React from "react";
 import Frame from "../components/layout";
 import { Typography, Divider } from "antd";
-const { Title, Text, Paragraph } = Typography;
+const { Title } = Typography;
 
 class Data extends React.Component {
   render() {

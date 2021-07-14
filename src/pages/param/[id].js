@@ -10,13 +10,8 @@ import {
   Col,
   Divider,
   Badge,
-  Avatar,
 } from "antd";
-import {
-  SlidersOutlined,
-  InfoCircleOutlined,
-  TagOutlined,
-} from "@ant-design/icons";
+import { SlidersOutlined } from "@ant-design/icons";
 import TypeIndicator from "../../components/types";
 import Frame from "../../components/layout";
 import Paper from "../../components/paper";

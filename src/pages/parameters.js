@@ -3,7 +3,7 @@ import Frame from "../components/layout";
 import ParameterCard from "../components/param";
 import { PageHeader, Button, Row, AutoComplete } from "antd";
 import { SlidersOutlined } from "@ant-design/icons";
-import { Link, navigate, graphql } from "gatsby";
+import { Link, graphql } from "gatsby";
 import Tags from "../components/tags";
 import TypeIndicator from "../components/types";
 
@@ -51,7 +51,6 @@ class Parameters extends React.Component {
           option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
         }
         dropdownMatchSelectWidth={500}
-        autoFocus
         onChange={onAutoCompleteChange}
       />
     );
