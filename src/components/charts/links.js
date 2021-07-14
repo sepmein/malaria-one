@@ -83,7 +83,6 @@ const generateLinksAndTypeCategories = (params, links) => {
       category: uniqueTagsCategories.indexOf(param.tags.toString()),
     };
   });
-  console.log(generatedData);
   let generatedLinks = links.map((link) => {
     return {
       id: link.id,

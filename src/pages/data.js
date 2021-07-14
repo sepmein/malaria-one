@@ -6,7 +6,7 @@ const { Title } = Typography;
 class Data extends React.Component {
   render() {
     return (
-      <Frame>
+      <Frame pageTitle='Data'>
         <Typography>
           <Title>Add more data to This Project</Title>
           <Title level={2} id="db">

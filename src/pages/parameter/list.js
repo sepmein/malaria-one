@@ -1,11 +1,11 @@
 import * as React from "react";
-import Frame from "../components/layout";
-import ParameterCard from "../components/param";
 import { PageHeader, Button, Row, AutoComplete } from "antd";
 import { SlidersOutlined } from "@ant-design/icons";
 import { Link, graphql } from "gatsby";
-import Tags from "../components/tags";
-import TypeIndicator from "../components/types";
+import ParameterCard from "../../components/param";
+import Frame from "../../components/layout";
+import Tags from "../../components/tags";
+import TypeIndicator from "../../components/types";
 
 class Parameters extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class Parameters extends React.Component {
             justifyContent: "space-between",
           }}
         >
-          <Link to={"/param/" + id}>{name}</Link>
+          <Link to={"/parameter/" + id}>{name}</Link>
           <span>
             <Tags tags={tags} />
             <TypeIndicator type={type} />
@@ -61,7 +61,7 @@ class Parameters extends React.Component {
         d.name.toUpperCase().includes(this.state.searchString.toUpperCase())
     );
     return (
-      <Frame>
+      <Frame pageTitle="Parameter List">
         <PageHeader
           title="Parameters"
           subTitle="in Malaria Modellings"

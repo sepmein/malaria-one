@@ -31,8 +31,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // console.log(JSON.stringify(result, null, 4));
   result.data.malariaone.allParameters.nodes.forEach((node) => {
     createPage({
-      path: `/param/${node.id}`,
-      component: path.resolve(`./src/pages/param/[id].js`),
+      path: `/parameter/${node.id}`,
+      component: path.resolve(`./src/pages/parameter/[id].js`),
       context: {
         ...node,
       },

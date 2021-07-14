@@ -6,7 +6,7 @@ const { Title } = Typography;
 
 const AboutPage = () => {
   return (
-    <Frame>
+    <Frame pageTitle='About'>
       <Typography>
         <Title>About</Title>
       </Typography>

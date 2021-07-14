@@ -27,7 +27,7 @@ class IndexPage extends React.Component {
     const totalPapers = data.malariaone.allPapers.totalCount;
     const totalValues = data.malariaone.allValues.totalCount;
     return (
-      <Frame pageTitle="Malaria One">
+      <Frame pageTitle="Home">
         <Typography>
           <Title>Understand Malaria Modelling</Title>
           <Paragraph>
@@ -73,7 +73,7 @@ class IndexPage extends React.Component {
           subTitle="in malaria mathematical models"
           avatar={{ icon: <SlidersOutlined /> }}
           extra={
-            <Link to="/parameters">
+            <Link to="/parameter/list">
               <Button>more</Button>
             </Link>
           }

@@ -14,7 +14,7 @@ const { Title, Text, Paragraph } = Typography;
 class OpenSource extends React.Component {
   render() {
     return (
-      <Frame>
+      <Frame pageTitle='Open Source'>
         <Typography>
           <Title>Open Source</Title>
           <Paragraph>

@@ -72,7 +72,7 @@ class Paper extends React.Component {
     );
 
     return (
-      <Frame>
+      <Frame pageTitle='Paper'>
         <PageHeader
           title="Papers"
           subTitle="in Malaria Modellings"

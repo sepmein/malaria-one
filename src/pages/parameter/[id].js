@@ -12,13 +12,15 @@ import {
   Badge,
 } from "antd";
 import { SlidersOutlined } from "@ant-design/icons";
+import * as dayjs from "dayjs";
+import * as relativeTime from "dayjs/plugin/relativeTime";
+
 import TypeIndicator from "../../components/types";
 import Frame from "../../components/layout";
 import Paper from "../../components/paper";
 import Tag from "../../components/tags";
 import ParameterCard from "../../components/param";
-import * as dayjs from "dayjs";
-import * as relativeTime from "dayjs/plugin/relativeTime";
+
 dayjs.extend(relativeTime);
 
 const { Title } = Typography;
@@ -110,7 +112,7 @@ class Param extends React.Component {
     ];
 
     return (
-      <Frame>
+      <Frame pageTitle='Parameter'>
         {/* Parameter Name */}
         <PageHeader
           /*https://stackoverflow.com/a/66572589/886198 naviagte function, check here*/
