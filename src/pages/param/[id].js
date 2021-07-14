@@ -121,7 +121,7 @@ class Param extends React.Component {
         >
           <Descriptions size="middle" column={3}>
             <Descriptions.Item label="type">
-              <TypeIndicator type={param.type} />
+              <TypeIndicator type={param.type} layout="full" />
             </Descriptions.Item>
             <Descriptions.Item label="tags">
               <Tag tags={param.tags} layout="full" />

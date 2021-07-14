@@ -1,9 +1,16 @@
 import * as React from "react";
 import Frame from "../components/layout";
-import { graphql } from "gatsby";
-import { Table } from "antd";
+import { graphql, Link } from "gatsby";
+import { PageHeader, Row, AutoComplete, Table } from "antd";
+import { FilePptOutlined } from "@ant-design/icons";
 
 class Paper extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchString: "",
+    };
+  }
   render() {
     const columns = [
       { title: "Title", dataIndex: "title", key: "title" },
@@ -16,7 +23,7 @@ class Paper extends React.Component {
       },
     ];
     const allPapers = this.props.data.malariaone.allPapers.nodes;
-    const tableData = allPapers.map((paper) => {
+    let tableData = allPapers.map((paper) => {
       return {
         title: paper.title,
         publishedAt: paper.publishedAt,
@@ -24,9 +31,55 @@ class Paper extends React.Component {
         parameters: paper.parametersPapersByPaperId.totalCount,
       };
     });
+
+    const renderItem = (title, id) => ({
+      value: title,
+      label: (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Link to={"/paper/" + id}>{title}</Link>
+        </div>
+      ),
+    });
+    const onAutoCompleteChange = (value) => {
+      this.setState({
+        searchString: value,
+      });
+    };
+    const autoComplete = (
+      <AutoComplete
+        options={allPapers.map((paper) => renderItem(paper.title, paper.id))}
+        placeholder="search"
+        style={{ width: "200px" }}
+        /* case insensitive searching: https://ant.design/components/auto-complete/ */
+        filterOption={(inputValue, option) =>
+          option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+        }
+        dropdownMatchSelectWidth={500}
+        onChange={onAutoCompleteChange}
+      />
+    );
+
+    /* stackoverflow: https://stackoverflow.com/a/41436402/886198 */
+    const filteredPapersWithSearchString = tableData.filter(
+      (d) =>
+        this.state.searchString === "" ||
+        d.title.toUpperCase().includes(this.state.searchString.toUpperCase())
+    );
+
     return (
       <Frame>
-        <Table dataSource={tableData} columns={columns} />
+        <PageHeader
+          title="Papers"
+          subTitle="in Malaria Modellings"
+          extra={[autoComplete]}
+          avatar={{ icon: <FilePptOutlined /> }}
+        ></PageHeader>
+        <Table dataSource={filteredPapersWithSearchString} columns={columns} />
       </Frame>
     );
   }
@@ -37,6 +90,7 @@ export const query = graphql`
     malariaone {
       allPapers {
         nodes {
+          id
           doi
           title
           publishedAt

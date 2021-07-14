@@ -36,19 +36,19 @@ const switchTagTypeFull = (tag) => {
   switch (tag) {
     case "human":
       return (
-        <Tag icon={<UserOutlined />} color={green[3]}>
+        <Tag icon={<UserOutlined />} color={green[5]}>
           Human
         </Tag>
       );
     case "vector":
       return (
-        <Tag icon={<BugOutlined />} color={orange[3]}>
+        <Tag icon={<BugOutlined />} color={orange[5]}>
           Vector
         </Tag>
       );
     case "intervention":
       return (
-        <Tag icon={<DeploymentUnitOutlined />} color={magenta[3]}>
+        <Tag icon={<DeploymentUnitOutlined />} color={magenta[5]}>
           Intervention
         </Tag>
       );
