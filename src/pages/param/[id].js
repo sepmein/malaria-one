@@ -65,16 +65,19 @@ class Param extends React.Component {
         title: "2.5%",
         dataIndex: "ciLow",
         key: "ciLow",
+        sorter: (a, b) => a.ciLow - b.ciLow,
       },
       {
         title: "value",
         dataIndex: "value",
         key: "value",
+        sorter: (a, b) => a.value - b.value,
       },
       {
         title: "97.5%",
         dataIndex: "ciHigh",
         key: "ciHigh",
+        sorter: (a, b) => a.ciHigh - b.ciHigh,
       },
       {
         title: "Unit",

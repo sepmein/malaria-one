@@ -17,7 +17,6 @@ class ParameterCard extends React.Component {
         {" "}
         <Card
           hoverable
-          className={card}
           actions={[
             <Link to={"/param/" + this.props.id}>
               <SlidersOutlined />

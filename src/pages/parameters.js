@@ -54,9 +54,7 @@ class Parameters extends React.Component {
         onChange={onAutoCompleteChange}
       />
     );
-    {
-      /* stackoverflow: https://stackoverflow.com/a/41436402/886198 */
-    }
+    /* stackoverflow: https://stackoverflow.com/a/41436402/886198 */
     const filteredParamsWithSearchString = params.filter(
       (d) =>
         this.state.searchString === "" ||

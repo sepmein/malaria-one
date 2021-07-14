@@ -10,7 +10,6 @@ class Paper extends React.Component {
       <Col span={8}>
         <Card
           hoverable
-          className={card}
           actions={[
             <FileTextOutlined />,
             <a href={"https://doi.org/" + this.props.doi}>
