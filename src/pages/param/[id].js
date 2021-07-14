@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql, navigate } from "gatsby";
+import { graphql, navigate, Link } from "gatsby";
 import {
   Table,
   Empty,
@@ -66,18 +66,23 @@ class Param extends React.Component {
         dataIndex: "ciLow",
         key: "ciLow",
         sorter: (a, b) => a.ciLow - b.ciLow,
+        render: (number) => (number ? Math.round(number * 10) / 10 : "-"),
+        align: "right",
       },
       {
         title: "value",
         dataIndex: "value",
         key: "value",
         sorter: (a, b) => a.value - b.value,
+        render: (number) => (number ? Math.round(number * 10) / 10 : "-"),
+        align: "right",
       },
       {
         title: "97.5%",
         dataIndex: "ciHigh",
         key: "ciHigh",
-        sorter: (a, b) => a.ciHigh - b.ciHigh,
+        render: (number) => (number ? Math.round(number * 10) / 10 : "-"),
+        align: "right",
       },
       {
         title: "Unit",
@@ -88,11 +93,14 @@ class Param extends React.Component {
         title: "Paper",
         dataIndex: "paperId",
         key: "paperID",
+        render: (id) => <Link to={"/paper/" + id}>@</Link>,
+        align: "center",
       },
       {
         title: "Created",
         dataIndex: "dateCreated",
         key: "dateCreated",
+        render: (date) => dayjs(date).fromNow(),
       },
     ];
 
