@@ -1,6 +1,7 @@
 import * as React from "react";
 import { graphql, navigate } from "gatsby";
 import {
+  Table,
   Empty,
   PageHeader,
   Descriptions,
@@ -26,6 +27,7 @@ import * as relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
 const { Title } = Typography;
+const { Column } = Table;
 
 class Param extends React.Component {
   render() {
@@ -42,10 +44,65 @@ class Param extends React.Component {
     const relatedParametersCount =
       this.props.data.malariaone.parameterById
         .parametersParametersByParametersId.totalCount;
+    const values =
+      this.props.data.malariaone.parameterById.valuesByParameter.nodes;
+
+    const valuesTableData = values.map((value) => {
+      return {
+        key: value.id,
+        type: value.type,
+        ciLow: value.ciLow,
+        value: value.value,
+        ciHigh: value.ciHigh,
+        unit: value.unit,
+        paperId: value.paper,
+        dateCreated: value.dateCreated,
+      };
+    });
+
+    const columns = [
+      {
+        title: "Type",
+        dataIndex: "type",
+        key: "type",
+      },
+      {
+        title: "2.5%",
+        dataIndex: "ciLow",
+        key: "ciLow",
+      },
+      {
+        title: "value",
+        dataIndex: "value",
+        key: "value",
+      },
+      {
+        title: "97.5%",
+        dataIndex: "ciHigh",
+        key: "ciHigh",
+      },
+      {
+        title: "Unit",
+        dataIndex: "unit",
+        key: "unit",
+      },
+      {
+        title: "Paper",
+        dataIndex: "paperId",
+        key: "paperID",
+      },
+      {
+        title: "Created",
+        dataIndex: "dateCreated",
+        key: "dateCreated",
+      },
+    ];
+
     const routes = [
       { path: "/home", breadcrumbName: "home" },
       { path: "/parameters", breadcrumbName: "parameters" },
     ];
+
     return (
       <Frame>
         {/* Parameter Name */}
@@ -73,6 +130,7 @@ class Param extends React.Component {
             ) : null}
           </Descriptions>
         </PageHeader>
+
         {/* Parameter description */}
         <Divider orientation="left"></Divider>
         <Row>
@@ -81,6 +139,13 @@ class Param extends React.Component {
         <Row>
           <Col>{param.definition}</Col>
         </Row>
+
+        <Divider></Divider>
+        <Row>
+          <Title level={3}>Values</Title>
+        </Row>
+        <Table dataSource={valuesTableData} columns={columns} />
+
         <Divider orientation="left"></Divider>
         <Row>
           <Title level={3}>
@@ -167,6 +232,19 @@ export const query = graphql`
               type
               tags
             }
+          }
+        }
+        valuesByParameter {
+          nodes {
+            ciHigh
+            ciLow
+            dateCreated
+            dateUpdated
+            id
+            paper
+            type
+            unit
+            value
           }
         }
       }
