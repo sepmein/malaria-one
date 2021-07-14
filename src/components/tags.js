@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Tooltip } from "antd";
+import { Tooltip, Tag } from "antd";
 import {
   UserOutlined,
   BugOutlined,
@@ -31,10 +31,42 @@ const switchTagType = (tag) => {
       return null;
   }
 };
+
+const switchTagTypeFull = (tag) => {
+  switch (tag) {
+    case "human":
+      return (
+        <Tag icon={<UserOutlined />} color={green[3]}>
+          Human
+        </Tag>
+      );
+    case "vector":
+      return (
+        <Tag icon={<BugOutlined />} color={orange[3]}>
+          Vector
+        </Tag>
+      );
+    case "intervention":
+      return (
+        <Tag icon={<DeploymentUnitOutlined />} color={magenta[3]}>
+          Intervention
+        </Tag>
+      );
+    default:
+      return null;
+  }
+};
+
 const Tags = (props) => {
   if (props.tags) {
     return props.tags.map((tag) => {
-      return <React.Fragment key={tag}>{switchTagType(tag)}</React.Fragment>;
+      if (props.layout === "full") {
+        return (
+          <React.Fragment key={tag}>{switchTagTypeFull(tag)}</React.Fragment>
+        );
+      } else {
+        return <React.Fragment key={tag}>{switchTagType(tag)}</React.Fragment>;
+      }
     });
   } else {
     return null;

@@ -124,7 +124,7 @@ class Param extends React.Component {
               <TypeIndicator type={param.type} />
             </Descriptions.Item>
             <Descriptions.Item label="tags">
-              <Tag tags={param.tags} />
+              <Tag tags={param.tags} layout="full" />
             </Descriptions.Item>
             <Descriptions.Item label="creation time">
               {dayjs(param.dateCreated).fromNow()}

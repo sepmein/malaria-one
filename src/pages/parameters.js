@@ -65,7 +65,7 @@ class Parameters extends React.Component {
         <PageHeader
           title="Parameters"
           subTitle="in Malaria Modellings"
-          extra={[autoComplete, <Button>test</Button>]}
+          extra={[autoComplete]}
           avatar={{ icon: <SlidersOutlined /> }}
         ></PageHeader>
         <Row gutter={[16, 16]}>
