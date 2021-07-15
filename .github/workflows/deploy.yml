@@ -11,5 +11,7 @@ jobs:
         host: "165.227.174.250"
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
-        script:  whoami
+        script: |
+          cd /home/sepmein/malaria-one
+          git pull origin master
           
