@@ -8,10 +8,12 @@ jobs:
     - name: checkout latest repo version
       uses: appleboy/ssh-action@v0.1.4
       with:
-        host: "165.227.174.250"
+        host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         script: |
           cd /home/sepmein/malaria-one
           git pull origin master
-          
+          npm install
+          gatsby build
+          mv -v public/* /var/www/html/
