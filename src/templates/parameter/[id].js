@@ -24,7 +24,6 @@ import ParameterCard from "../../components/param";
 dayjs.extend(relativeTime);
 
 const { Title } = Typography;
-const { Column } = Table;
 
 class Param extends React.Component {
   render() {
@@ -112,7 +111,7 @@ class Param extends React.Component {
     ];
 
     return (
-      <Frame pageTitle='Parameter'>
+      <Frame pageTitle="Parameter">
         {/* Parameter Name */}
         <PageHeader
           /*https://stackoverflow.com/a/66572589/886198 naviagte function, check here*/

@@ -32,7 +32,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   result.data.malariaone.allParameters.nodes.forEach((node) => {
     createPage({
       path: `/parameter/${node.id}`,
-      component: path.resolve(`./src/pages/parameter/[id].js`),
+      component: path.resolve(`./src/templates/parameter/[id].js`),
       context: {
         ...node,
       },

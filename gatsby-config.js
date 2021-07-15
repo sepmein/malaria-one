@@ -1,4 +1,7 @@
 module.exports = {
+  flags: {
+    THE_FLAG: false,
+  },
   siteMetadata: {
     title: "malaria-one",
   },
@@ -12,7 +15,6 @@ module.exports = {
       },
     },
     "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
