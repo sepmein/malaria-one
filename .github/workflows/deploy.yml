@@ -8,7 +8,7 @@ jobs:
     - name: checkout latest repo version
       uses: appleboy/ssh-action@v0.1.4
       with:
-        host: ${{ secrets.HOST }}
+        host: "165.227.174.250"
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         script:  whoami
