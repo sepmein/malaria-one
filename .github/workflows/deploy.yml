@@ -18,4 +18,5 @@ jobs:
           npm install
           export NODE_OPTIONS='--max-old-space-size=8192'
           gatsby build
+          rm -rf /var/www/html/*
           mv -v public/* /var/www/html/
