@@ -1,6 +1,0 @@
----
-- name: Deployment
-  hosts: all
-  tasks:
-    - name: leaving a mark
-      command: 'touch /tmp/sepmein_was_here'
