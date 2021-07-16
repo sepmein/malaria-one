@@ -8,4 +8,10 @@ updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "weekly"  
+    open-pull-requests-limit: 20
+
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/db" # Location of package manifests
+    schedule:
+      interval: "weekly"  
