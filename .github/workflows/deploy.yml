@@ -15,8 +15,8 @@ jobs:
           cd /home/sepmein/malaria-one
           git fetch --all
           git reset --hard origin/master
-          npm install
           export NODE_OPTIONS='--max-old-space-size=8192'
+          gatsby clean
           gatsby build
           rm -rf /var/www/html/*
           mv -v public/* /var/www/html/
