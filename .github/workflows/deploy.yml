@@ -13,7 +13,9 @@ jobs:
         key: ${{ secrets.KEY }}
         script: |
           cd /home/sepmein/malaria-one
-          git pull origin master
+          git fetch --all
+          git reset --hard origin/master
           npm install
+          export NODE_OPTIONS='--max-old-space-size=8192'
           gatsby build
           mv -v public/* /var/www/html/
