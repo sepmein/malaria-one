@@ -11,6 +11,8 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
+        timeout: 30m
+        command_timeout: 60m
         script: |
           cd /home/sepmein/malaria-one
           git fetch --all
