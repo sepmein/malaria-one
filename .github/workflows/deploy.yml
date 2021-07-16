@@ -1,5 +1,5 @@
 name: deploy to malariaone server
-on: [push]
+on: create
 jobs:
   deploy:
     name: deploy
