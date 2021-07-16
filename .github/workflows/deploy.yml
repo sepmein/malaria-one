@@ -1,5 +1,9 @@
 name: deploy to malariaone server
-on: create
+on: 
+  create:
+  release:
+    types:
+      - published
 jobs:
   deploy:
     name: deploy
