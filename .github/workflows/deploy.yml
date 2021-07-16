@@ -1,6 +1,5 @@
 name: deploy to malariaone server
-on: 
-  create:
+on:
   release:
     types:
       - published
