@@ -6,14 +6,15 @@ module.exports = {
     title: "malaria-one",
   },
   plugins: [
-    "gatsby-plugin-gatsby-cloud",
-    "gatsby-plugin-image",
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: "G-DJQNEC2NK4",
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: ["UA-204055464-1"],
       },
     },
+    "gatsby-plugin-gatsby-cloud",
+    "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-manifest",
