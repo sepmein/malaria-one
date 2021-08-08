@@ -112,8 +112,8 @@ const generateOptions = (graphType = "force", params, links) => {
           return { name: tag };
         }),
         roam: true,
-        edgeSymbol: ["none", "arrow"],
-        edgeSymbolSize: 10,
+        edgeSymbol: ["arrow", "none"],
+        edgeSymbolSize: 3,
         label: {
           show: false,
         },

@@ -6,12 +6,15 @@ const { Title } = Typography;
 
 const AboutPage = () => {
   return (
-    <Frame pageTitle='About'>
+    <Frame pageTitle="About">
       <Typography>
         <Title>About</Title>
       </Typography>
       Contact: zhangc@who.int
       <Timeline mode="alternate">
+        <Timeline.Item label="08-08-2021">
+          Added Two parameter types
+        </Timeline.Item>
         <Timeline.Item label="09-07-2021">
           Added Parameter Link Graph
         </Timeline.Item>
