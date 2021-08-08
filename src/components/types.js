@@ -5,8 +5,10 @@ import {
   PercentageOutlined,
   PieChartOutlined,
   FieldTimeOutlined,
+  AreaChartOutlined,
+  ApiOutlined,
 } from "@ant-design/icons";
-import { purple, gold, geekblue, red } from "@ant-design/colors";
+import { purple, gold, geekblue, red, cyan, magenta } from "@ant-design/colors";
 
 const switchParamType = (type) => {
   switch (type) {
@@ -32,6 +34,18 @@ const switchParamType = (type) => {
       return (
         <Tooltip placement="bottom" title="duration">
           <FieldTimeOutlined style={{ color: geekblue[3] }} />
+        </Tooltip>
+      );
+    case "distribution":
+      return (
+        <Tooltip placement="bottom" title="distribution">
+          <AreaChartOutlined style={{ color: cyan[3] }} />
+        </Tooltip>
+      );
+    case "pod":
+      return (
+        <Tooltip placement="bottom" title="Distribution Parameter">
+          <ApiOutlined style={{ color: magenta[3] }} />
         </Tooltip>
       );
     default:
