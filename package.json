@@ -32,7 +32,7 @@
     "gatsby-plugin-manifest": "^3.11.0",
     "gatsby-plugin-mdx": "^2.10.1",
     "gatsby-plugin-react-helmet": "^4.11.0",
-    "gatsby-plugin-sharp": "^3.11.0",
+    "gatsby-plugin-sharp": "^3.13.0",
     "gatsby-plugin-sitemap": "^4.7.0",
     "gatsby-source-filesystem": "^3.10.0",
     "gatsby-source-graphql": "^3.11.0",
