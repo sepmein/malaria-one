@@ -27,7 +27,7 @@
     "gatsby": "^3.11.1",
     "gatsby-plugin-gatsby-cloud": "^2.11.0",
     "gatsby-plugin-google-gtag": "^3.11.0",
-    "gatsby-plugin-image": "^1.10.1",
+    "gatsby-plugin-image": "^1.13.0",
     "gatsby-plugin-less": "^5.10.0",
     "gatsby-plugin-manifest": "^3.11.0",
     "gatsby-plugin-mdx": "^2.10.1",
