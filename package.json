@@ -29,7 +29,7 @@
     "gatsby-plugin-google-gtag": "^3.11.0",
     "gatsby-plugin-image": "^1.10.1",
     "gatsby-plugin-less": "^5.10.0",
-    "gatsby-plugin-manifest": "^3.11.0",
+    "gatsby-plugin-manifest": "^3.15.0",
     "gatsby-plugin-mdx": "^2.10.1",
     "gatsby-plugin-react-helmet": "^4.11.0",
     "gatsby-plugin-sharp": "^3.11.0",
